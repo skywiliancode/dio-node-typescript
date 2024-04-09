@@ -1,3 +1,8 @@
+interface IUser{
+  name: string,
+  email: string
+}
+
 const db = [
   {
     name: 'wilian',
