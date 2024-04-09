@@ -11,17 +11,24 @@ const db = [
 ]
 
 export class UserService{
+
+  db: IUser[]
+
+  constructor(database = db){
+    this.db = database
+  }
+
   createUser = (name: string, email: string) =>{
     const user = {
       name,
       email
     }
 
-    db.push(user)
-    console.log(db)
+    this.db.push(user)
+    console.log(this.db)
   }
 
   getAllUsers = () =>{
-    return db
+    return this.db
   }
 }
