@@ -25,7 +25,7 @@ export class UserService{
     }
 
     this.db.push(user)
-    console.log(this.db)
+    console.log('DB atualizado', this.db)
   }
 
   getAllUsers = () =>{
