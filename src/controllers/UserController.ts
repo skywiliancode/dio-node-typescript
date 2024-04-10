@@ -2,15 +2,22 @@ import { Request, Response } from "express"
 import { UserService } from "../services/UserService"
 
 export class UserController{
+
+  userService: UserService
+
+  constructor(userService = new UserService){
+    this.userService = userService
+
+  }
+
   createUser = (request: Request, response: Response) => {
     const user = request.body
-    const userService = new UserService()
     
     if(!user.name){
       return response.status(400).json({messege:"Bad request! User invalid."})
     }
     
-    userService.createUser(user.name, user.email)
+    this.userService.createUser(user.name, user.email)
     
     return response.status(201).json({
       messege: 'Usuário criado'
@@ -18,8 +25,7 @@ export class UserController{
   }
   
   getAllUsers = (request: Request, response: Response) => {
-    const userService = new UserService()
-    userService.getAllUsers()
+    this.userService.getAllUsers()
   }
 
 }
